@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee</title>
+</head>
+
+<body>
+    <div>
+        <h1>Welcome <%=username %></h1>
+        <a href="/Admin">Dashboard</a>
+        <a href="/Logout">logout</a>
+    </div>
+    <br>
+    <br>
+    <div>
+        <form method="post">
+            <fieldset>
+                <legend>Add New Employee</legend>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="EmpName" value="<%=EmpName%>"></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td><input type="text" name="EmpPhone" value="<%=EmpPhone%>"></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td><input type="text" name="EmpAddress" value="<%=EmpAddress%>"></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>
+                            <select name="EmpGender">
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Designation</td>
+                        <td>
+                            <select name="EmpDesignation">
+                                <option value="salesman">salesman</option>
+                                <option value="receptionist">receptionist</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"><input type="submit" name="Update" value="Update Employee"></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>
