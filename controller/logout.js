@@ -3,6 +3,7 @@ var router = express.Router();
 
 router.get('/', (req, res) => {
     res.clearCookie('logAdmin');
+    res.clearCookie('logUser');
     res.redirect('/Login');
 });
 

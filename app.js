@@ -10,6 +10,7 @@ var addemp = require('./controller/addemp');
 var allemp = require('./controller/allemp');
 var upemp = require('./controller/upemp');
 var delemp = require('./controller/delemp');
+var employee = require('./controller/employee');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/Admin/AddEmployee', addemp);
 app.use('/Admin/AllEmployeeList', allemp);
 app.use('/Admin/Update', upemp);
 app.use('/Admin/Delete', delemp);
+app.use('/Employee', employee);
 
 
 //SERVER STARTUP
