@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee</title>
+</head>
+
+<body>
+    <div>
+        <h1>Welcome <%=username %></h1>
+        <a href="/Admin">Dashboard</a>
+        <a href="/Logout">logout</a>
+    </div>
+    <br>
+    <br>
+    <div>
+
+
+        <table>
+            <% for(let i=1; i<=10; i++){ %>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Name</td>
+                            <td>demo name <%=i%></td>
+                        </tr>
+                        <tr>
+                            <td>Phone</td>
+                            <td>demo phone <%=i%></td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>demo address <%=i%></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>
+                                male
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Designation</td>
+                            <td>
+                                salesman
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><a href="/Admin/Update/<%=i%>">Update</a></td>
+                            <td><a href="/Admin/Delete/<%=i%>">Delete</a></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <% } %>
+
+        </table>
+
+    </div>
+</body>
+
+</html>
