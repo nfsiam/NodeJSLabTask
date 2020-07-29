@@ -4,15 +4,11 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
 var login = require('./controller/login');
-var admin = require('./controller/admin');
 var logout = require('./controller/logout');
-var addemp = require('./controller/addemp');
-var allemp = require('./controller/allemp');
-var upemp = require('./controller/upemp');
-var delemp = require('./controller/delemp');
-var employee = require('./controller/employee');
-var myprofile = require('./controller/myprofile');
-var upprofile = require('./controller/upprofile');
+
+var admin = require('./controller/admin/admin');
+var employee = require('./controller/employee/employee');
+
 
 var app = express();
 
@@ -24,15 +20,17 @@ app.use(bodyParser());
 app.use(cookieParser());
 
 app.use('/Login', login);
-app.use('/Admin', admin);
 app.use('/Logout', logout);
-app.use('/Admin/AddEmployee', addemp);
-app.use('/Admin/AllEmployeeList', allemp);
-app.use('/Admin/Update', upemp);
-app.use('/Admin/Delete', delemp);
+
+app.use('/Admin', admin);
+app.use('/Admin/AddEmployee', admin);
+app.use('/Admin/AllEmployeeList', admin);
+app.use('/Admin/Update', admin);
+app.use('/Admin/Delete', admin);
+
 app.use('/Employee', employee);
-app.use('/Employee/MyProfile', myprofile);
-app.use('/Employee/UpdateProfile', upprofile);
+app.use('/Employee/MyProfile', employee);
+app.use('/Employee/UpdateProfile', employee);
 
 
 //SERVER STARTUP
