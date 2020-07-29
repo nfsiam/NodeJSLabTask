@@ -2,48 +2,65 @@ var express = require('express');
 var router = express.Router();
 
 
-router.get('/', (req, res) => {
+let data = {
+    username: '',
+    empObj: {
+        EmpName: '',
+        EmpPhone: '',
+        EmpAddress: '',
+        EmpGender: '',
+        EmpDesignation: ''
+    },
+}
+
+const logValid = (req, res) => {
     if (req.cookies['logUser'] != null) {
-        var data = {
-            username: req.cookies['logUser'],
-        }
-        res.render('employee/employee', data);
+        return true;
     } else {
         res.redirect('/Login');
+    }
+};
+
+const viewLoader = (req, res, path) => {
+    data.username = req.cookies['logUser'];
+    res.render(path, data);
+};
+
+
+router.get('/', (req, res) => {
+
+    if (logValid(req, res)) {
+        viewLoader(req, res, 'employee/employee');
     }
 });
 
 //my profile
 router.get('/MyProfile', (req, res) => {
-    if (req.cookies['logUser'] != null) {
-        var data = {
-            username: req.cookies['logUser'],
-            EmpName: "demo name " + req.cookies['logUser'],
-            EmpPhone: "demo phone ",
-            EmpAddress: "demo address ",
-            EmpGender: "male",
-            EmpDesignation: "salesman"
-        }
-        res.render('employee/myprofile', data);
-    } else {
-        res.redirect('/Login');
+
+    if (logValid(req, res)) {
+        const id = req.cookies['logUser'];
+        data.empObj.EmpName = `demo name ${id}`;
+        data.empObj.EmpPhone = `demo phone ${id}`;
+        data.empObj.EmpAddress = `demo address ${id}`;
+        data.empObj.EmpGender = 'male';
+        data.empObj.EmpDesignation = 'salesman';
+
+        viewLoader(req, res, 'employee/myprofile');
     }
 });
 
 //update profile
 router.get('/UpdateProfile', (req, res) => {
-    if (req.cookies['logUser'] != null) {
-        var data = {
-            username: req.cookies['logUser'],
-            EmpName: "demo name " + req.cookies['logUser'],
-            EmpPhone: "demo phone ",
-            EmpAddress: "demo address ",
-            EmpGender: "male",
-            EmpDesignation: "salesman"
-        }
-        res.render('employee/upprofile', data);
-    } else {
-        res.redirect('/Login');
+
+    if (logValid(req, res)) {
+        const id = req.cookies['logUser'];
+        data.empObj.EmpName = `demo name ${id}`;
+        data.empObj.EmpPhone = `demo phone ${id}`;
+        data.empObj.EmpAddress = `demo address ${id}`;
+        data.empObj.EmpGender = 'male';
+        data.empObj.EmpDesignation = 'salesman';
+
+        viewLoader(req, res, 'employee/upprofile');
     }
 });
 

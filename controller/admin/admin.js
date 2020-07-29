@@ -29,21 +29,21 @@ const viewLoader = (req, res, path) => {
 //dashboard
 router.get('/', (req, res) => {
     if (logValid(req, res)) {
-        viewLoader(req, res, 'admin/admin')
+        viewLoader(req, res, 'admin/admin');
     }
 });
 
 //all employee info
 router.get('/AllEmployeeList', (req, res) => {
     if (logValid(req, res)) {
-        viewLoader(req, res, 'admin/allemp')
+        viewLoader(req, res, 'admin/allemp');
     }
 });
 
 //add employee
 router.get('/AddEmployee', (req, res) => {
     if (logValid(req, res)) {
-        viewLoader(req, res, 'admin/addemp')
+        viewLoader(req, res, 'admin/addemp');
     }
 });
 
@@ -58,19 +58,18 @@ router.get('/Update/:id', (req, res) => {
         data.empObj.EmpGender = 'male';
         data.empObj.EmpDesignation = 'salesman';
 
-        viewLoader(req, res, 'admin/upemp')
+        viewLoader(req, res, 'admin/upemp');
     }
 
 });
 
 //delete employee
 router.get('/Delete/:id', (req, res) => {
-    if (req.cookies['logAdmin'] != null) {
+    if (logValid(req, res)) {
         const id = req.params.id;
         data.EmpName = `demo name ${id}`;
-        res.render('admin/delemp', data);
-    } else {
-        res.redirect('/Login');
+
+        viewLoader(req, res, 'admin/delemp');
     }
 });
 
