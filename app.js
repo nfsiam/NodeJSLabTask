@@ -2,6 +2,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+const PORT = process.env.PORT || 3000;
 
 var login = require('./controller/login');
 var logout = require('./controller/logout');
@@ -34,6 +35,6 @@ app.use('/Employee/UpdateProfile', employee);
 
 
 //SERVER STARTUP
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('express server started at 3000');
 });
